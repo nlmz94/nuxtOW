@@ -1,75 +1,39 @@
-# Nuxt Minimal Starter
+# OnlyWeebs — Nuxt front
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Nuxt 4 front-end for the `symfonyOW` API.
+
+## Pages
+
+| Route          | API used                                  |
+| -------------- | ----------------------------------------- |
+| `/`            | `GET /api/home`                           |
+| `/search`      | `GET /api/animes?searchTerm=&page=&limit=` |
+| `/anime/:id`   | `GET /api/animes/{id}`                    |
+| `/login`       | `POST /api/auth/login`                    |
+| `/register`    | `POST /api/auth/register` (then logs in)  |
+
+The nav bar loads the current user from `GET /api/me`, logs out via `POST /api/auth/logout`,
+and has a light/dark switcher (saved in `localStorage`, defaults to the OS preference).
+Icons are Font Awesome Free.
 
 ## Setup
 
-Make sure to install dependencies:
-
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
 yarn install
-
-# bun
-bun install
+yarn dev        # http://localhost:3000
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+The API base URL defaults to `http://localhost:8000/api`; override it with:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+NUXT_PUBLIC_API_BASE=https://api.example.com/api yarn dev
 ```
+
+Auth uses the Symfony session cookie, so the API's `CORS_ALLOW_ORIGIN` must match this app's origin.
 
 ## Production
 
-Build the application for production:
-
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
 yarn build
-
-# bun
-bun run build
+node .output/server/index.mjs
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
