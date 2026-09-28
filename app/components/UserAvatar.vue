@@ -1,19 +1,25 @@
 <script setup lang="ts">
 import type { ImageVariant } from '~/utils/types'
 
-withDefaults(defineProps<{
+const props = withDefaults(defineProps<{
   image: ImageVariant | null
   size?: number
 }>(), { size: 32 })
+
+const isDefault = computed(() => !props.image || props.image.default.endsWith('/images/defaultProfileImage.png'))
+
 </script>
 
 <template>
   <span class="avatar" :style="{ width: `${size}px`, height: `${size}px` }">
-    <picture v-if="image">
+    <template v-if="isDefault">
+      <img src="/images/defaultProfileImage-light.png" alt="" class="light-only">
+      <img src="/images/defaultProfileImage-dark.png" alt="" class="dark-only">
+    </template>
+    <picture v-else-if="image">
       <source :srcset="image.webp" type="image/webp">
       <img :src="image.default" alt="">
     </picture>
-    <i v-else class="fa-solid fa-user" />
   </span>
 </template>
 

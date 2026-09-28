@@ -43,6 +43,12 @@ body {
   color: var(--text);
 }
 
+/* Theme-specific images: render both, show the one matching data-theme. */
+:root:not([data-theme='dark']) .dark-only,
+:root[data-theme='dark'] .light-only {
+  display: none !important;
+}
+
 a {
   color: var(--primary);
   text-decoration: none;

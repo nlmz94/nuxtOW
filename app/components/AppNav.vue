@@ -13,8 +13,9 @@ async function onLogout() {
 <template>
   <header class="nav">
     <div class="container nav-inner">
-      <NuxtLink to="/" class="brand">
-        <i class="fa-solid fa-torii-gate" /> OnlyWeebs
+      <NuxtLink to="/" class="brand" aria-label="OnlyWeebs home">
+        <img src="/images/ow-smol-text-light.webp" alt="OnlyWeebs" class="light-only">
+        <img src="/images/ow-smol-text-dark.webp" alt="OnlyWeebs" class="dark-only">
       </NuxtLink>
 
       <nav class="links">
@@ -70,14 +71,12 @@ async function onLogout() {
 }
 
 .brand {
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: var(--text);
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.brand i {
-  color: var(--primary);
+.brand img {
+  height: 30px;
+  width: auto;
 }
 
 .links {

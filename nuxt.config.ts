@@ -20,6 +20,10 @@ export default defineNuxtConfig({
       title: 'OnlyWeebs',
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'apple-touch-icon', href: '/images/favicon.png' },
+      ],
       script: [
         {
           // Applies the saved theme before first paint to avoid a flash.
